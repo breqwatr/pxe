@@ -1,0 +1,6 @@
+default install
+label install
+        menu label ^Install
+        menu default
+        kernel ubuntu-installer/amd64/linux
+        append auto=true priority=critical url=http://{{http_ip}}/preseed/breqwatr.cfg vga=788 initrd=ubuntu-installer/amd64/initrd.gz

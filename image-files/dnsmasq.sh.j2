@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+/usr/sbin/dnsmasq \
+  -k \
+  -p 0 \
+  --user=root \
+  --log-facility='-' \
+  --log-dhcp \
+  --interface="{{interface}}" \
+  --enable-tftp \
+  --tftp-root=/var/breqwatr/pxe/tftp \
+  --dhcp-boot=pxelinux.0 \
+  --dhcp-range="{{dhcp_start}},{{dhcp_end}},{{dhcp_subnet}},1h" \
+  --dhcp-option="3,{{interface_ip}}" \
+  --dhcp-option="6,{{dns_ip}}" \
+  --dhcp-option=42,"0.0.0.0"
+

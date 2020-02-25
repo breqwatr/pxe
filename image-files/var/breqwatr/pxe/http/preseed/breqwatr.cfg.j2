@@ -1,0 +1,46 @@
+# use the custom squashfs as the net-image
+d-i live-installer/net-image string http://{{http_ip}}/ubuntu/install/filesystem.squashfs
+
+# use the ISO's mirror. country code must be 'manual' for hostname to read
+d-i mirror/country string manual
+d-i mirror/http/hostname string {{http_ip}}
+d-i mirror/http/directory string /ubuntu
+d-i mirror/http/proxy string
+
+# force a prompt for hostname
+d-i netcfg/get_hostname string ubuntu
+d-i netcfg/get_hostname seen false
+
+# do not use security.ubuntu.com for xenial-security apt source
+d-i apt-setup/security_protocol string http
+d-i apt-setup/security_host string {{http_ip}}
+d-i apt-setup/security_path string /ubuntu
+
+# do not prompt for language
+d-i pkgsel/install-language-support boolean false
+d-i pkgsel/include string openssh-server vim
+
+# no automatic updates
+d-i pkgsel/update-policy select none
+
+# Better to let the user pick their name and password now...
+# d-i passwd/user-fullname arcusadmin
+# d-i passwd/username string arcusadmin
+# d-i passwd/user-password password password
+# d-i passwd/user-password-again password password
+
+# do not encrypt the users home directory
+d-i user-setup/encrypt-home boolean false
+
+# set the clock to UTC, time zone eastern
+d-i clock-setup/utc boolean true
+d-i time/zone string US/Eastern
+
+# locale, language, keyboard setup
+d-i console-setup/ask_detect boolean false
+d-i keyboard-configuration/xkb-keymap select us
+d-i keyboard-configuration/layoutcode string us
+d-i debian-installer/locale string en_US
+
+# Avoid that last message about the install being complete.
+d-i finish-install/reboot_in_progress note
