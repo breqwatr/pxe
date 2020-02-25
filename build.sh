@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-tag=$(cat ../../VERSION)
+tag=latest
 if [[ "$1" != "" ]]; then
   tag="$1"
 fi
