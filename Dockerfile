@@ -28,8 +28,9 @@ RUN apt-get update \
 # others are broken too but they don't look needed right now. if NGINX shows
 # 404's then fix them too. (Everything after rm -rf /iso)
 RUN find /var/breqwatr/pxe/http | grep "\.ude" | grep -v ".\udeb" | while read f; do new=$f"b"; cp $f $new ; done \
- && cd /var/breqwatr/pxe/http/pool/main/l/linux/ \
- && cp pcmcia-storage-modules-4.15.0-55-generic-di_4.15.0-55.60_amd6.ude pcmcia-storage-modules-4.15.0-55-generic-di_4.15.0-55.60_amd64.udeb
+ && cd /var/breqwatr/pxe/http/pool/main/l/linux/
+# Needed this in 18.04.03, it doesn't seem to be there now
+# && cp pcmcia-storage-modules-4.15.0-55-generic-di_4.15.0-55.60_amd6.ude pcmcia-storage-modules-4.15.0-55-generic-di_4.15.0-55.60_amd64.udeb
 
 
 ###############################################################################
