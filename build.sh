@@ -10,7 +10,7 @@ fi
 echo "INFO: Collecting tmp/ubuntu18.iso"
 mkdir -p tmp/
 if [[ ! -f tmp/ubuntu1804.iso ]]; then
-  wget http://cdimage.ubuntu.com/releases/18.04.4/release/ubuntu-18.04.4-server-amd64.iso \
+  wget http://cdimage.ubuntu.com/releases/18.04.4/release/ubuntu-18.04.5-server-amd64.iso \
     -O tmp/ubuntu1804.iso
 fi
 

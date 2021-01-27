@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 """Apply environment variables to arcus-api's config files"""
 
 import os
