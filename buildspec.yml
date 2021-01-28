@@ -14,9 +14,9 @@ phases:
     commands:
       - echo Build started on `date`
       - echo "Building the pxe Docker image."
+      - mkdir -p tmp
       - wget http://cdimage.ubuntu.com/releases/18.04.4/release/ubuntu-18.04.5-server-amd64.iso -O tmp/ubuntu1804.iso
       - docker build -t $IMAGE_REPO_NAME:$IMAGE_TAG .
-      - rm -r tmp/
       - docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
       - docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:latest
   post_build:
